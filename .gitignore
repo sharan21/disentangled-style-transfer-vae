@@ -1,0 +1,17 @@
+__pycache__
+data/yelp/
+data/ptb/
+data/snli/
+data/multitask/
+saved_vae_models/
+saved_text_classifiers/
+dumps/
+figs
+simple-examples
+simple-examples.tgz
+.DS_Store
+*.pyc
+*.txt
+*.png
+samples.txt
+snli-lm
