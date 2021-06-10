@@ -1,7 +1,5 @@
 __pycache__
 data/yelp/
-data/ptb/
-data/snli/
 data/multitask/
 saved_vae_models/
 saved_text_classifiers/

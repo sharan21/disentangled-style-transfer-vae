@@ -9,7 +9,7 @@ from torch.autograd import Variable
 # this class implements a simple classifier which is used as one of the quantitative metrics to measure style transfer
 class BinaryClassifier(nn.Module):
 	def __init__(self, vocab_size, embedding_size, rnn_type, hidden_size,
-				sos_idx, eos_idx, pad_idx, unk_idx, max_sequence_length, num_layers=1, dataset='snli', bidirectional=False, 
+				sos_idx, eos_idx, pad_idx, unk_idx, max_sequence_length, num_layers=1, dataset='yelp', bidirectional=False, 
 				attention=False):
 
 		super().__init__()
@@ -32,14 +32,11 @@ class BinaryClassifier(nn.Module):
 		self.num_layers = num_layers
 		self.hidden_size = hidden_size 
 		
+		
 		if(self.dataset == 'yelp'):
 			self.output_size = 2
 		
-		if(self.dataset == 'snli'):
-			self.output_size = 2
 		
-		if(self.dataset == 'multitask'):
-			self.output_size = 4
 
 		self.embedding = nn.Embedding(vocab_size, embedding_size)
 	

@@ -139,17 +139,6 @@ def train_word2vec_model(text_file_path, model_file_path, embedding_size):
     print("Model saved")
 
 
-if __name__ == "__main__":
-    
-    # train word2vec embeddings
-
-    embedding_size = 300
-    path_to_train_text = "./data/snli/combined_data.txt"
-    save_path = "./data/snli/snli_w2v_model"
-
-    train_word2vec_model(path_to_train_text, save_path, 300)
-
-
     
     
 

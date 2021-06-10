@@ -9,8 +9,6 @@ from torch.utils.data import DataLoader
 from model_rep import SentenceVae
 from utils import to_var, idx2word, interpolate, load_model_params_from_checkpoint
 from dataset_preproc_scripts.yelp import Yelp
-# from snli import SNLI
-# from multitask import MultiTask
 from random import randint
 import numpy as np
 

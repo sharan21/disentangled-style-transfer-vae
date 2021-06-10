@@ -38,11 +38,7 @@ class SentenceVae(nn.Module):
 		if(self.dataset == 'yelp'):
 			self.output_size = 2
 		
-		if(self.dataset == 'snli'):
-			self.output_size = 2
 		
-		if(self.dataset == 'multitask'):
-			self.output_size = 4
 
 		# load pretrained w2v weights if available
 		if(path_to_w2v_weights is not None):

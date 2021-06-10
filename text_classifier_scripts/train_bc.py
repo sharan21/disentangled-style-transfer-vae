@@ -18,7 +18,7 @@ import torch.nn as nn
 from model_bc import BinaryClassifier
 from multitask import MultiTask
 from yelp import Yelp
-from snli import SNLI
+
 
 from utils import idx2word
 import argparse
@@ -35,14 +35,6 @@ def main(args):
 
     ts = ts + "-" + str(args.epochs)
 
-    if(args.dataset == "multitask"):
-        print("Running multitask dataset!")
-        
-        dataset = MultiTask
-    if(args.dataset == "snli"):
-        print("Running SNLI!")
-        
-        dataset = SNLI
     if(args.dataset == "yelp"):
         print("Running Yelp!")
         
@@ -67,10 +59,10 @@ def main(args):
     w2i = datasets['train'].get_w2i()
 
     # print(type(int(datasets['train'].yelp_max_sequence_length)))
-    if(args.dataset == "multitask"):
-        max_sequence_length = max(datasets['train'].yelp_max_sequence_length, datasets['train'].snli_max_sequence_length)
-    else:
-        max_sequence_length = datasets['train'].max_sequence_length
+    
+        
+    
+    max_sequence_length = datasets['train'].max_sequence_length
 
     # get training params
     params = dict(
@@ -223,7 +215,7 @@ if __name__ == '__main__':
     parser.add_argument('-log', '--logdir', type=str, default='logs')
     parser.add_argument('-attention', '--attention', type=bool, default=False)
     
-    parser.add_argument('-dataset', '--dataset', type=str, default='snli', required=True)
+    parser.add_argument('-dataset', '--dataset', type=str, default='yelp', required=True)
 
     args = parser.parse_args()
     

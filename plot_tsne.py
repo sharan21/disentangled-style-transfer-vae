@@ -14,8 +14,7 @@ from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 from model_rep import SentenceVae
 from dataset_preproc_scripts.yelp import Yelp
-from dataset_preproc_scripts.snli import SNLI
-from dataset_preproc_scripts.multitask import MultiTask
+
 from utils import to_var, idx2word, interpolate, load_model_params_from_checkpoint
 
 
@@ -55,16 +54,7 @@ def main(args):
         print("Using Yelp!")
         tsne_labels = np.empty((0, output_size), int)
         dataset = Yelp
-    elif(model.dataset == "snli"):
-        output_size = 2
-        print("Using Snli!")
-        tsne_labels = np.empty((0,output_size), int)
-        dataset = SNLI
-    else: # multitask yelp + snli
-        print("Using Multitask!")
-        output_size = 4
-        tsne_labels = np.empty((0, output_size), int)
-        dataset = MultiTask
+   
 
     splits = ['train']
 

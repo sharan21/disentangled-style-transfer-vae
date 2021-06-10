@@ -17,9 +17,9 @@ from tqdm import tqdm
 import torch.nn.functional as F
 import torch.nn as nn
 from model_rep import SentenceVae
-from dataset_preproc_scripts.multitask import MultiTask
+
 from dataset_preproc_scripts.yelp import Yelp
-from dataset_preproc_scripts.snli import SNLI
+
 from utils import idx2word
 import argparse
 
@@ -56,12 +56,7 @@ def main(args):
 
     ts = ts + str(args.epochs)
 
-    if(args.dataset == "multitask"):
-        print("Running multitask dataset!")
-        dataset = MultiTask
-    if(args.dataset == "snli"):
-        print("Running SNLI!")
-        dataset = SNLI
+
     if(args.dataset == "yelp"):
         print("Running Yelp!")
         dataset = Yelp
@@ -84,10 +79,10 @@ def main(args):
     i2w = datasets['train'].get_i2w()
     w2i = datasets['train'].get_w2i()
 
-    if(args.dataset == "multitask"):
-        max_sequence_length = max(datasets['train'].yelp_max_sequence_length, datasets['train'].snli_max_sequence_length)
-    else:
-        max_sequence_length = datasets['train'].max_sequence_length
+    
+        
+    
+    max_sequence_length = datasets['train'].max_sequence_length
 
     #get w2v pretrained embeds matrix for dataset
     if(args.w2v):
@@ -308,7 +303,7 @@ if __name__ == '__main__':
     parser.add_argument('-x0', '--x0', type=int, default=20000)
     parser.add_argument('-v', '--print_every', type=int, default=50)
     parser.add_argument('-w2v', '--w2v', action='store_true')
-    parser.add_argument('-dataset', '--dataset', type=str, default='snli')
+    parser.add_argument('-dataset', '--dataset', type=str, default='yelp')
 
     args = parser.parse_args()
     args.rnn_type = args.rnn_type.lower()

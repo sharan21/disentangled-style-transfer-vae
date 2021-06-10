@@ -35,22 +35,13 @@ def main(args):
     model.eval()
 
     # load the vocab of the chosen dataset
-    if(model.dataset == 'multitask'):
-        print("Multitask dataset used!")
     
-        with open(args.data_dir+'/multitask/multitask.vocab.json', 'r') as file:
-            vocab = json.load(file)
-    elif(model.dataset == 'yelp'):
+    if(model.dataset == 'yelp'):
         print("Yelp dataset used!")
         
         with open(args.data_dir+'/yelp/yelp.vocab.json', 'r') as file:
             vocab = json.load(file)
-    else:
-        print("SNLI dataset used!")
-
-        with open(args.data_dir+'/snli/snli.vocab.json', 'r') as file:
-            vocab = json.load(file)
-
+    
     w2i, i2w = vocab['w2i'], vocab['i2w']
 
     samples, z = model.inference(n=args.num_samples)

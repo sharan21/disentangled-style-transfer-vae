@@ -1,33 +1,18 @@
+This is a in-progress pytorch replication of the paper https://www.aclweb.org/anthology/P19-1041/. There seems to be no other working pytorch replications of this paper, please feel free to contribute and work towards its completion.
+  
 
-# How to run
+# Instructions
+Here is an example on how to download, train and infer from the Yelp dataset
 
-## For single dataset generation aka without multitask style transfer (ptb/yelp/snli)
+    bash ./bash-scripts/download_yelp.sh
+    python3 train_rep.py
+    python3 inference.py -n 1 -c 'path/to/checkpoint.pytorch' -p 'path/to/model_params.json'
 
-Here is an example on how to download, train the Yelp dataset.
+# Directory structure
 
-    bash download_yelp.sh
-    python3 train.py -dataset yelp
+ - ./dataset_preproc_scripts/yelp.py: is used to preprocess the raw data, create vocab, and store the preprocess data in json form in ./data/yelp. For testing, I am only using a small portion of the whole dataset. To change this, change the variables in __init__() of yelp.py. Everytime a change is made, you need to run bash_delete_yelp_preproc.sh to delete the old data so that new vocabs and processed files are created
+ - model_rep.py: contains the torch models defintion,
+ - train_rep.py: contains the hyper paramerers, dataloading, model creation, loss definition, training, testing, logging and saving of checkpoints
 
-For sample generation and inference.
 
-    python3 inference_yelp.py -n 1 -c 'path/to/checkpoint.pytorch' 
-
-## For multitask generation aka with general style transfer (snli+yelp)
-
-Here is an example on how to download, train the multitask SNLI+Yelp dataset for general style
-
-	bash download_yelp.sh
-	bash download_snli.sh
-    python3 train.py -dataset multitask
-
-For sample generation and inference.
-
-    python3 inference_multitask.py -n 1 -c 'path/to/checkpoint.pytorch' 
-
-For style transfer between two sentences
-
-	python3 style_transfer.py -n 1 -c 'path/to/checkpoint.pytorch' -p 'path/to/model_params.json'
-
-To enable the encoder classifier please use --hspace True while training any model. To enable Gram Schimdt Orthogonalisation of Cntent Z and Style Z vectors please use ---ortho True while training. Self attention on the encoder can also be added using --attention.
-
-		
+    
