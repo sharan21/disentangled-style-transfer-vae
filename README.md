@@ -1,3 +1,7 @@
+PLEASE READ:
+This code is NOT usable so please avoid trying to build using it. There are issues with the underlying RNN code whcih prevents the model from performing even a simple reconstruction task properly. The issue does not seem to be with the code related to the additional discriminators and auxillary losses. I have not found time to fix this and moved along to other things quite some time back. If you wish to work over this and correct it, please consider looking into fixing the underlying RNN. I am writing this to avoid any wastage of time for researchers, considering that I have been emailed quite a bit about if this is usable.
+
+
 This is a in-progress pytorch replication of the paper https://www.aclweb.org/anthology/P19-1041/. There seems to be no other working pytorch replications of this paper, please feel free to contribute and work towards its completion.
   
 
